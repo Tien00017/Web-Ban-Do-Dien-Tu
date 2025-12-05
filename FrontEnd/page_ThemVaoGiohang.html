@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ hàng</title>
+    <link rel="stylesheet" href="css_ThemVaoGioHang.css">
+</head>
+<body>
+<header>
+    <h1>Thiết Bị Vệ Sinh & Phòng tắm</h1>
+    <nav>
+        <ul>
+            <li><i class="fas fa-user"></i></li>
+            <li><a href="login_page.html">Thangt2005</a></li>
+            <li><a href="#">Giỏ hàng</a></li>
+            <li>
+                <form class="search-form" action="#">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm ..." class="search-input">
+                    <div class="search-icon"><i class="fa fa-search"></i></div>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="menu-container">
+    <div class="sidebar"><i class="fa fa-bars"></i> DANH MỤC SẢN PHẨM</div>
+    <div class="top-menu">
+        <ul>
+            <li><a href="home.html">Trang chủ</a></li>
+            <li><a href="page_combo.html">Combo</a></li>
+            <li><a href="toilet_page.html">Bồn Cầu</a></li>
+            <li><a href="lavabo-page.html">Lavabo</a></li>
+            <li><a href="page_Tulavabo.html">Tủ Lavabo</a></li>
+            <li><a href="page_VoiSenTam.html">Vòi Sen Tắm</a></li>
+            <li><a href="page_ChauRuaChen.html">Chậu Rửa Chén</a></li>
+            <li><a href="page_bonTam.html">Bồn Tắm</a></li>
+            <li><a href="page_voiRua.html">Vòi Rửa</a></li>
+            <li><a href="page_BonTieuNam.html">Bồn Tiểu Nam</a></li>
+            <li><a href="page_PhuKien.html">Phụ Kiện</a></li>
+        </ul>
+    </div>
+</div>
+<main class="cart-container">
+    <table class="cart-table">
+        <thead>
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tạm tính</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="product-info">
+                <button class="remove-btn">✖</button>
+                <img src="image_all/voiLavabo.png" alt="Vòi Lavabo Inox 304 LB271">
+                <span>Vòi Lavabo Inox 304 LB271</span>
+            </td>
+            <td>400.000đ</td>
+            <td class="qty">
+                <button>-</button>
+                <input type="text" value="1">
+                <button>+</button>
+            </td>
+            <td>400.000đ</td>
+        </tr>
+
+        <tr>
+            <td class="product-info">
+                <button class="remove-btn">✖</button>
+                <img src="image_all\voiSen2.png" alt="Vòi Sen Tắm Nóng Lạnh LB21">
+                <span>Vòi Sen Tắm Nóng Lạnh LB21</span>
+            </td>
+            <td>3.200.000đ</td>
+            <td class="qty">
+                <button>-</button>
+                <input type="text" value="1">
+                <button>+</button>
+            </td>
+            <td>3.200.000đ</td>
+        </tr>
+
+        <tr>
+            <td class="product-info">
+                <button class="remove-btn">✖</button>
+                <img src="image_all\voiSen1.png" alt="Sen Cây Nóng Lạnh SC113">
+                <span>Sen Cây Nóng Lạnh SC113</span>
+            </td>
+            <td>820,000đ</td>
+            <td class="qty">
+                <button>-</button>
+                <input type="text" value="1">
+                <button>+</button>
+            </td>
+            <td>820,000đ</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="cart-actions">
+        <button class="update-btn">Cập nhật giỏ hàng</button>
+    </div>
+
+    <div class="cart-total">
+        <h3>Tổng cộng giỏ hàng</h3>
+        <p><span>Tạm tính</span> <span>4.420.000đ</span></p>
+        <p><span>Tổng</span> <span>4.420.000đ</span></p>
+        <button class="checkout-btn">Tiến hành thanh toán</button>
+    </div>
+</main>
+</body>
+</html>
