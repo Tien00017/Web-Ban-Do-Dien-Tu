@@ -1,0 +1,323 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", "Arial", sans-serif;
+    background: linear-gradient(180deg, #e8f4ff, #ffffff); /* nền sáng dịu */
+    display: block;
+    height: auto;
+    overflow-x: hidden;
+    color: #222;
+}
+
+/* ==================== HEADER ==================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;                 /* chiều cao header theo ảnh */
+    background: #0078c8;           /* xanh dương */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+/* Tiêu đề lớn bên trái */
+header h1 {
+    margin: 0;
+    font-size: 36px;               /* chữ to như ảnh */
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.5px;
+}
+
+/* Menu nhỏ bên phải (Đăng nhập / Giỏ hàng) */
+header nav {
+    display: flex;
+    align-items: center;
+}
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 26px;
+}
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* ================== MENU SẢN PHẨM (bên dưới header) ================== */
+.menu-container {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 120px; /* tạo khoảng trống bằng chiều cao header */
+    position: static; /* menu cuộn theo trang */
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    position: relative;
+    width: 200px;
+    background: red;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sidebar-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background: white;
+    color: black;
+    z-index: 1000;
+}
+
+.sidebar:hover .sidebar-menu {
+    display: block;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.sidebar-menu a {
+    color: black;
+    text-decoration: none;
+}
+
+/* ===== Thanh menu ngang (top menu) ===== */
+.top-menu {
+    flex: 1;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+    min-height: 52px;
+}
+
+/* Các mục trong menu ngang */
+.top-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 18px;
+    align-items: center;
+}
+
+.top-menu ul li {
+    position: relative;
+}
+
+.top-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 14px 8px;
+    font-size: 14px;
+    position: relative;
+}
+
+/* Hiệu ứng gạch đỏ khi hover */
+.top-menu ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    height: 2px;
+    width: 0;
+    background: #d30000;
+    transition: width 0.22s;
+}
+
+.top-menu ul li a:hover::after {
+    width: 100%;
+}
+
+/* ===== Icon tìm kiếm (phía phải menu) ===== */
+.search-icon {
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.search-icon:hover {
+    color: #d30000;
+}
+
+/* ==================== SẢN PHẨM NỔI BẬT ==================== */
+.main-content {
+    margin-top: 20px;
+    padding: 0 50px; /* 50px khoảng trống 2 bên */
+}
+
+.main-content h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #111;
+    margin-bottom: 40px;
+}
+
+/* ====== LƯỚI SẢN PHẨM ====== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 sản phẩm mỗi hàng */
+    gap: 20px;             /* khoảng cách giữa các sản phẩm */
+    max-width: 1200px;     /* giới hạn chiều rộng lưới */
+    margin: 0 auto;        /* căn giữa lưới → tạo khoảng trống 2 bên */
+    padding: 0 15px;       /* khoảng cách nhỏ trong lưới */
+}
+
+/* ====== THẺ SẢN PHẨM ====== */
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.product-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.price {
+    color: #d32f2f;
+    font-weight: bold;
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.discount {
+    background-color: #ff4d4f; /* nền đỏ nổi bật */
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-left: 8px; /* khoảng cách so với giá tiền */
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 8px;
+}
+
+button {
+    border: none;
+    padding: 6px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.add-to-cart {
+    background-color: #1976d2;
+    color: white;
+}
+
+.buy {
+    background-color: #43a047;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background: #222;
+    color: #fff;
+    margin-top: 40px;
+    padding-top: 30px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 40px;
+}
+
+.footer-column {
+    width: 23%;
+    min-width: 220px;
+    margin-bottom: 25px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #ffcc00;
+}
+
+.footer-column p,
+.footer-column ul li a {
+    color: #eee;
+    font-size: 14px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin: 6px 0;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 22px;
+    margin-right: 12px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 12px;
+    background: #111;
+    margin-top: 15px;
+    font-size: 14px;
+}
