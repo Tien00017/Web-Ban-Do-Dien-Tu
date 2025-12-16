@@ -1,0 +1,354 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: #f4f6fb;
+    color: #222;
+}
+
+/* =========================================================
+    HEADER CHÍNH – NHẸ, HIỆN ĐẠI
+========================================================= */
+.site-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.header-inner {
+    max-width: 1300px;
+    margin: auto;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LEFT AREA */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #222;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.logo-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* TOP NAVIGATION */
+.main-nav a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+    background: rgba(0, 84, 255, 0.10);
+    color: #0054ff;
+}
+
+/* =========================================================
+    RIGHT AREA + SEARCH
+========================================================= */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+/* SEARCH BOX */
+.search-wrap {
+    display: flex;
+    width: 330px;
+    background: #f2f3f6;
+    border-radius: 8px;
+    border: 1px solid #d8d8d8;
+    overflow: hidden;
+}
+
+.search-wrap input {
+    flex: 1;
+    padding: 10px 12px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+}
+
+.search-btn {
+    width: 44px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.search-btn i {
+    font-size: 18px;
+    color: #555;
+}
+
+/* HEADER ICON BUTTONS */
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.icon-btn:hover {
+    background: #eaf1ff;
+    border-color: #96baff;
+}
+
+.icon-btn i {
+    font-size: 18px;
+    color: #0054ff;
+}
+
+/* LOGIN / SIGNUP BUTTONS */
+.btn-outline,
+.btn-primary {
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn-outline {
+    border: 1px solid #0054ff;
+    color: #0054ff;
+}
+
+.btn-outline:hover {
+    background: rgba(0, 84, 255, 0.12);
+}
+
+.btn-primary {
+    background: #0054ff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0043cb;
+}
+
+/* =========================================================
+    CATEGORY BAR (Menu dưới header)
+========================================================= */
+.category-bar {
+    background: rgba(0, 84, 255, 0.10);
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    border-bottom: 1px solid #dbe7ff;
+}
+
+.category-bar .cat {
+    text-decoration: none;
+    color: #0054ff;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.category-bar .cat:hover {
+    background: rgba(0, 84, 255, 0.20);
+}
+
+/* =========================================================
+    MAIN CONTENT
+========================================================= */
+.container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 22px;
+}
+
+/* =========================================================
+    HOME SLIDER
+========================================================= */
+.news-section h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.news-slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.news-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s ease;
+}
+
+.news-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* SLIDE BUTTONS */
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.45);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* SLIDER DOTS */
+.slider-dots {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.slider-dots span {
+    width: 10px;
+    height: 10px;
+    background: #c1c9dd;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 4px;
+    transition: 0.2s ease;
+}
+
+.slider-dots .active {
+    background: #0054ff;
+}
+
+/* =========================================================
+    FEATURED PRODUCTS
+========================================================= */
+.featured h2 {
+    font-size: 22px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.feature-category h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+/* PRODUCT CARD */
+.product-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e3e3e3;
+    padding: 14px;
+    transition: 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.product-card h4 {
+    font-size: 15px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.price {
+    color: #d70000;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+/* =========================================================
+    FOOTER
+========================================================= */
+.site-footer {
+    background: #003b9b;
+    color: white;
+    padding: 40px 0;
+    margin-top: 40px;
+}
+
+.footer-inner {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-inner h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.footer-inner p {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.social-icons a {
+    margin-right: 12px;
+    font-size: 18px;
+    color: white;
+}
+
+.social-icons a:hover {
+    color: #ffd700;
+}
