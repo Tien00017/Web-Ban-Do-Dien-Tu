@@ -1,0 +1,122 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: #f3f5fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* =========================================================
+   FORM CONTAINER
+========================================================= */
+.form-container {
+    width: 380px;
+    background: white;
+    padding: 30px 32px 40px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+/* LOGO */
+.logo-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Back to home */
+.back-home-btn {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #0054ff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+.back-home-btn:hover {
+    color: #003bbd;
+}
+
+/* TITLE */
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+form input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    border: 1px solid #d7d7d7;
+    background: #fafafa;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #0054ff;
+    background: #eef4ff;
+    box-shadow: 0 0 0 3px rgba(0, 84, 255, 0.15);
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+form button {
+    width: 100%;
+    padding: 12px 14px;
+    background: #0054ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+form button:hover {
+    background: #003fcb;
+}
+
+/* =========================================================
+   SWITCH LINKS
+========================================================= */
+.switch-link {
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.switch-link a {
+    color: #0054ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
