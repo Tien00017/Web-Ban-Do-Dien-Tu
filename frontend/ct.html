@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TechZone - Trang chủ</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="ctStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+
+<body>
+<!-- HEADER -->
+<header class="site-header">
+    <div class="header-inner">
+
+        <!-- LEFT SIDE -->
+        <div class="header-left">
+            <a class="logo" href="#">
+                <img src="image/logo.jpg" class="logo-img">
+                TechZone
+            </a>
+
+            <nav class="main-nav">
+                <a href="HomePage.html" class="active">Trang chủ</a>
+                <a href="AboutUs.html">Giới thiệu</a>
+                <a href="Contact.html">Liên hệ</a>
+            </nav>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="header-right">
+
+            <!-- SEARCH -->
+            <div class="search-wrap">
+                <input type="search" placeholder="Tìm laptop, PC, linh kiện..." aria-label="Tìm kiếm">
+                <button class="search-btn">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+
+            <!-- ICONS -->
+            <div class="header-icons">
+
+                <!-- CART -->
+                <a href="Cart.html">
+                    <button class="icon-btn">
+                        <i class="fa fa-cart-shopping"></i>
+                    </button>
+                </a>
+
+                <!-- ACCOUNT -->
+                <a href="Profile.html">
+                    <button class="icon-btn">
+                        <i class="fa fa-user"></i>
+                    </button>
+                </a>
+
+                <a class="btn-outline" href="Login.html">Đăng nhập</a>
+                <a class="btn-primary" href="Register.html">Đăng ký</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY BAR -->
+    <nav class="category-bar">
+        <a href="Laptop.html" class="cat">Laptop</a>
+        <a href="PCGaming.html" class="cat">PC Gaming</a>
+        <a href="LinhKien.html" class="cat">Linh kiện</a>
+        <a href="ManHinh.html" class="cat">Màn hình</a>
+        <a href="PhuKien.html" class="cat">Phụ kiện</a>
+    </nav>
+</header>
+
+
+<!-- MAIN PAGE -->
+<main class="product-page">
+  <div class="product-container">
+    <!-- Cột trái: ảnh và gallery -->
+    <div class="product-gallery">
+      <img src="image/pc-main.jpg" alt="PC CPS Văn Phòng" class="main-photo">
+      <div class="thumbs">
+        <img src="image/pc-thumb1.jpg" alt="" class="thumb">
+        <img src="image/pc-thumb2.jpg" alt="" class="thumb">
+        <img src="image/monitor-thumb.jpg" alt="" class="thumb">
+      </div>
+    </div>
+
+    <!-- Cột phải: thông tin sản phẩm -->
+    <aside class="product-info">
+      <h1 class="product-title">PC CPS Văn Phòng AMD R3 3200G Kèm Màn Hình</h1>
+
+      <div class="price-block">
+        <div class="price-current">6.890.000<span class="currency">đ</span></div>
+        <div class="price-old">11.390.000đ</div>
+        <div class="price-savings">Tiết kiệm thêm đến <strong>207.000đ</strong> cho Smember</div>
+        <div class="student-discount">Ưu đãi Học sinh - Sinh viên đến <strong>344.500đ</strong></div>
+      </div>
+
+      <div class="cta-row">
+        <button class="btn-ghost">Trả góp 0%</button>
+        <button class="btn-primary">Mua ngay</button>
+        <button class="btn-outline">Thêm vào giỏ</button>
+      </div>
+
+      <section class="specs">
+        <h3>Thông số kỹ thuật</h3>
+        <ul>
+          <li><strong>CPU</strong> AMD Ryzen 3 3200G</li>
+          <li><strong>RAM</strong> 8GB DDR4 3200MHz</li>
+          <li><strong>SSD</strong> ADATA SU650 256GB</li>
+          <li><strong>VGA</strong> Onboard</li>
+          <li><strong>Màn hình</strong> Dahua LM22-A200Y 22" FHD 100Hz</li>
+          <li><strong>Mainboard</strong> ASRock A520M A4M4 Wifi</li>
+        </ul>
+      </section>
+
+      <section class="promos">
+        <h3>Khuyến mãi hấp dẫn</h3>
+        <ul>
+          <li>Tặng Chuột có dây Aula AM104</li>
+          <li>Tặng Bàn phím có dây Aula AK105</li>
+        </ul>
+      </section>
+
+      <section class="payments">
+        <h3>Ưu đãi thanh toán</h3>
+        <div class="payment-icons">
+          <img src="image/pay-kredivo.png" alt="">
+          <img src="image/pay-hsbc.png" alt="">
+          <img src="image/pay-vnpay.png" alt="">
+          <img src="image/pay-momo.png" alt="">
+        </div>
+      </section>
+
+      <div class="store-locations">
+        <h3>Kho hàng</h3>
+        <p>190B Hoàng Văn Thụ, P4, Q. Tân Bình, TP. HCM</p>
+        <p>377-379 Điện Biên Phủ, P.25, Q. Bình Thạnh, TP. HCM</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+
+        <div class="footer-branches">
+            <h4>Chi nhánh</h4>
+            <p>Hà Nội: 123 Cầu Giấy</p>
+            <p>TP.HCM: 456 Nguyễn Huệ, Q1</p>
+            <p>Đà Nẵng: 789 Bạch Đằng</p>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Liên hệ</h4>
+            <p><i class="fas fa-envelope"></i> support@techzone.vn</p>
+            <p><i class="fas fa-phone"></i> 0123 456 789</p>
+        </div>
+
+        <div class="footer-social">
+            <h4>Theo dõi</h4>
+            <p class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+<script src="../src/main/webapp/JavaScript/HomePage.js"></script>
+</body>
+</html>
