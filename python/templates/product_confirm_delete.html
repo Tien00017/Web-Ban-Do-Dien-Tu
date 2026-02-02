@@ -1,0 +1,16 @@
+{% extends 'store/base.html' %} {% block content %}
+<div class="container py-5 text-center">
+  <div class="card shadow d-inline-block p-5 border-danger">
+    <h3 class="text-danger mb-4">Bạn có chắc chắn muốn xóa?</h3>
+    <p class="mb-4">Sản phẩm: <strong>{{ product.name }}</strong></p>
+
+    <form method="POST">
+      {% csrf_token %}
+      <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary px-4"
+        >Hủy</a
+      >
+      <button type="submit" class="btn btn-danger px-4 ms-2">Xóa ngay</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

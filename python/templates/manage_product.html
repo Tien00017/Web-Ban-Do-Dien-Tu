@@ -1,0 +1,75 @@
+{% extends 'store/base.html' %} {% block content %}
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="fw-bold text-primary">
+        <i class="fas fa-users-cog me-2"></i> QUẢN LÝ TÀI KHOẢN
+      </h2>
+      <p class="text-muted">Tổng số tài khoản: {{ users.count }}</p>
+    </div>
+    <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">
+      <i class="fas fa-arrow-left"></i> Quay lại Dashboard
+    </a>
+  </div>
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="bg-light">
+          <tr>
+            <th class="py-3 ps-4">ID</th>
+            <th>Tên đăng nhập</th>
+            <th>Email</th>
+            <th>Ngày tham gia</th>
+            <th>Vai trò</th>
+            <th class="text-center">Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for u in users %}
+          <tr>
+            <td class="ps-4 text-muted">#{{ u.id }}</td>
+            <td>
+              <div class="fw-bold">{{ u.username }}</div>
+              {% if u.id == user.id %}
+              <span class="badge bg-success small">Đang online</span>
+              {% endif %}
+            </td>
+            <td>{{ u.email|default:"Chưa cập nhật" }}</td>
+            <td>{{ u.date_joined|date:"d/m/Y" }}</td>
+            <td>
+              {% if u.is_superuser %}
+              <span class="badge bg-danger rounded-pill">ADMIN</span>
+              {% else %}
+              <span class="badge bg-info text-dark rounded-pill"
+                >Khách hàng</span
+              >
+              {% endif %}
+            </td>
+            <td class="text-center">
+              {% if not u.is_superuser %}
+              <a
+                href="{% url 'delete_user' u.id %}"
+                class="btn btn-outline-danger btn-sm"
+                onclick="
+                  return confirm(
+                    'Bạn có chắc muốn xóa tài khoản này không? Dữ liệu đơn hàng của họ cũng có thể bị ảnh hưởng.',
+                  );
+                "
+              >
+                <i class="fas fa-trash-alt"></i> Xóa
+              </a>
+              {% else %}
+              <button class="btn btn-secondary btn-sm" disabled>
+                <i class="fas fa-lock"></i>
+              </button>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

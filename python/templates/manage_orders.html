@@ -1,0 +1,91 @@
+{% extends 'store/base.html' %} {% load humanize %} {% block content %}
+<div class="container-fluid py-4">
+  <div class="row">
+    <div class="col-md-2 bg-dark text-white p-3 rounded min-vh-50">
+      <h5 class="text-uppercase mb-4 border-bottom pb-2">Admin Menu</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-3">
+          <a
+            href="{% url 'admin_dashboard' %}"
+            class="text-white-50 text-decoration-none"
+          >
+            <i class="fas fa-box me-2"></i> Sản phẩm
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a
+            href="{% url 'manage_users' %}"
+            class="text-white-50 text-decoration-none"
+          >
+            <i class="fas fa-users me-2"></i> Quản lý User
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a
+            href="{% url 'manage_orders' %}"
+            class="text-white text-decoration-none fw-bold"
+          >
+            <i class="fas fa-file-invoice me-2"></i> Đơn hàng
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-10">
+      <h2 class="fw-bold text-primary mb-4">📄 Quản lý đơn hàng</h2>
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+          <table class="table table-hover table-bordered mb-0 align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>Mã ĐH</th>
+                <th>Khách hàng</th>
+                <th>Ngày đặt</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th class="text-center">Cập nhật</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in orders %}
+              <tr>
+                <td>#{{ order.id }}</td>
+                <td>
+                  <strong>{{ order.full_name }}</strong><br />
+                  <small class="text-muted">{{ order.phone }}</small>
+                </td>
+                <td>{{ order.created_at|date:"d/m/Y H:i" }}</td>
+                <td class="text-danger fw-bold">
+                  {{ order.total_price|intcomma }}₫
+                </td>
+                <td>
+                  {% if order.complete %}
+                  <span class="badge bg-success">Đã hoàn thành</span>
+                  {% else %}
+                  <span class="badge bg-warning text-dark">Chưa xử lý</span>
+                  {% endif %}
+                </td>
+                <td class="text-center">
+                  <a
+                    href="{% url 'update_order_status' order.id %}"
+                    class="btn btn-sm btn-primary"
+                  >
+                    <i class="fas fa-sync-alt"></i> Đổi trạng thái
+                  </a>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="6" class="text-center py-4">
+                  Chưa có đơn hàng nào.
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

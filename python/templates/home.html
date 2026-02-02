@@ -1,0 +1,115 @@
+{% extends 'store/base.html' %} {% load humanize %} {% block content %}
+<div class="container py-4">
+  <div class="row">
+    <div class="col-lg-3 mb-4">
+      <div class="card shadow-sm border-0">
+        <div class="card-header bg-danger text-white fw-bold">
+          <i class="fas fa-list-ul"></i> DANH MỤC
+        </div>
+        <div class="list-group list-group-flush">
+          <a
+            href="{% url 'home' %}"
+            class="list-group-item list-group-item-action {% if not curr_cat and not search_query %}active bg-danger border-danger{% endif %}"
+          >
+            Tất cả sản phẩm
+          </a>
+
+          {% for c in categories %}
+          <a
+            href="{% url 'category_detail' c.slug %}"
+            class="list-group-item list-group-item-action {% if curr_cat.slug == c.slug %}active bg-danger border-danger{% endif %}"
+          >
+            {{ c.name }}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="fw-bold text-dark">
+          {% if search_query %} Kết quả tìm kiếm: "<span class="text-danger"
+            >{{ search_query }}</span
+          >" {% elif curr_cat %} Danh mục:
+          <span class="text-danger">{{ curr_cat.name }}</span>
+          {% else %} Tất cả sản phẩm {% endif %}
+        </h4>
+        <span class="badge bg-secondary">{{ products.count }} sản phẩm</span>
+      </div>
+
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 g-3">
+        {% for product in products %}
+        <div class="col">
+          <div class="card h-100 shadow-sm border-0 product-card">
+            <div
+              class="position-relative text-center p-3"
+              style="height: 220px; background-color: #fff"
+            >
+              <a href="{% url 'product_detail' product.slug %}">
+                {% if product.image %}
+                <img
+                  src="{{ product.image.url }}"
+                  class="img-fluid h-100"
+                  style="object-fit: contain"
+                  alt="{{ product.name }}"
+                />
+                {% else %}
+                <img
+                  src="https://via.placeholder.com/300x300?text=No+Image"
+                  class="img-fluid h-100"
+                  alt="No Image"
+                />
+                {% endif %}
+              </a>
+            </div>
+
+            <div class="card-body d-flex flex-column border-top">
+              <h6 class="card-title">
+                <a
+                  href="{% url 'product_detail' product.slug %}"
+                  class="text-decoration-none text-dark fw-bold"
+                >
+                  {{ product.name|truncatechars:40 }}
+                </a>
+              </h6>
+
+              <div class="mt-auto">
+                <p class="card-text text-danger fw-bold fs-5 mb-2">
+                  {{ product.price|intcomma }}₫
+                </p>
+
+                <div class="d-grid gap-2">
+                  <a
+                    href="{% url 'product_detail' product.slug %}"
+                    class="btn btn-outline-secondary btn-sm"
+                  >
+                    Xem chi tiết
+                  </a>
+                  <a
+                    href="{% url 'add_to_cart' product.id %}"
+                    class="btn btn-danger btn-sm"
+                  >
+                    <i class="fas fa-cart-plus"></i> Thêm vào giỏ
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5">
+          <div class="alert alert-warning" role="alert">
+            <i class="fas fa-search fa-2x mb-3"></i><br />
+            Không tìm thấy sản phẩm nào phù hợp!
+          </div>
+          <a href="{% url 'home' %}" class="btn btn-primary"
+            >Quay lại trang chủ</a
+          >
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends 'store/base.html' %} {% load humanize %} {% block content %}
+<div class="bg-light py-5">
+  <div class="container">
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="row">
+        <div class="col-lg-7 mb-4">
+          <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3">
+              <h5 class="mb-0 fw-bold text-danger">
+                <i class="fas fa-shipping-fast me-2"></i> Thông tin giao hàng
+              </h5>
+            </div>
+            <div class="card-body p-4">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label fw-bold">Họ và tên người nhận</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    placeholder="Ví dụ: Nguyễn Văn A"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Số điện thoại</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    class="form-control"
+                    placeholder="09xx xxx xxx"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Email (Tùy chọn)</label>
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="email@example.com"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-bold">Địa chỉ nhận hàng</label>
+                  <textarea
+                    name="address"
+                    class="form-control"
+                    rows="2"
+                    placeholder="Số nhà, tên đường, phường/xã, quận/huyện..."
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-bold">Ghi chú đơn hàng</label>
+                  <textarea
+                    name="note"
+                    class="form-control"
+                    rows="2"
+                    placeholder="Ví dụ: Giao giờ hành chính, gọi trước khi giao..."
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="card shadow-sm border-0">
+            <div class="card-header bg-danger text-white py-3">
+              <h5 class="mb-0 fw-bold">
+                <i class="fas fa-clipboard-list me-2"></i> Đơn hàng của bạn
+              </h5>
+            </div>
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush">
+                {% for item in cart_items %}
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center px-4 py-3"
+                >
+                  <div class="d-flex align-items-center">
+                    <div class="position-relative">
+                      {% if item.product.image %}
+                      <img
+                        src="{{ item.product.image.url }}"
+                        class="rounded border"
+                        style="width: 50px; height: 50px; object-fit: cover"
+                      />
+                      {% else %}
+                      <div
+                        class="bg-secondary rounded"
+                        style="width: 50px; height: 50px"
+                      ></div>
+                      {% endif %}
+                      <span
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+                      >
+                        {{ item.qty }}
+                      </span>
+                    </div>
+                    <span class="ms-3 fw-bold text-dark"
+                      >{{ item.product.name|truncatechars:20 }}</span
+                    >
+                  </div>
+                  <span class="text-muted">{{ item.subtotal|intcomma }}₫</span>
+                </li>
+                {% endfor %}
+              </ul>
+
+              <div class="bg-light p-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Tạm tính</span>
+                  <span class="fw-bold">{{ total_price|intcomma }}₫</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                  <span>Phí vận chuyển</span>
+                  <span class="text-success fw-bold">Miễn phí</span>
+                </div>
+                <hr />
+                <div
+                  class="d-flex justify-content-between align-items-center mb-4"
+                >
+                  <span class="h5 fw-bold text-dark">Tổng cộng</span>
+                  <span class="h4 fw-bold text-danger"
+                    >{{ total_price|intcomma }}₫</span
+                  >
+                </div>
+
+                <div class="d-grid">
+                  <button
+                    type="submit"
+                    class="btn btn-danger py-3 fw-bold text-uppercase shadow"
+                  >
+                    Xác nhận đặt hàng
+                  </button>
+                </div>
+                <div class="text-center mt-3">
+                  <a
+                    href="{% url 'cart' %}"
+                    class="text-decoration-none text-muted small"
+                  >
+                    <i class="fas fa-arrow-left"></i> Quay lại giỏ hàng
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
