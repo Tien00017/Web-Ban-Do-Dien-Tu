@@ -1,0 +1,39 @@
+{% extends 'store/base.html' %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="bg-white p-4 rounded shadow-sm">
+      <h3 class="fw-bold text-center text-danger mb-4">ĐĂNG KÝ TÀI KHOẢN</h3>
+
+      <form method="POST">
+        {% csrf_token %} {% if form.errors %}
+        <div class="alert alert-danger">
+          {% for field in form %} {% for error in field.errors %}
+          <small><strong>{{ field.label }}:</strong> {{ error }}</small><br />
+          {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+          <small>{{ error }}</small>
+          {% endfor %}
+        </div>
+        {% endif %} {% for field in form %}
+        <div class="mb-2">
+          <label class="fw-bold small">{{ field.label }}</label>
+          {{ field }}
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-danger w-100 py-2 mt-3 fw-bold">
+          TẠO TÀI KHOẢN
+        </button>
+      </form>
+
+      <div class="text-center mt-3">
+        <p class="small">
+          Bạn đã có tài khoản?
+          <a href="{% url 'login' %}" class="text-danger fw-bold"
+            >Đăng nhập ngay</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

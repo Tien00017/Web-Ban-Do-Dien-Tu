@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cửa hàng linh kiện PC</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .card-product:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-danger py-3 sticky-top shadow-sm"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand fw-bold fs-4 d-flex align-items-center"
+          href="{% url 'home' %}"
+        >
+          <i class="fas fa-microchip me-2"></i> Cửa hàng linh kiện PC
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <form
+            action="{% url 'search' %}"
+            method="GET"
+            class="d-flex mx-auto w-50 my-2 my-lg-0 position-relative"
+          >
+            <input
+              class="form-control rounded-pill pe-5"
+              type="search"
+              name="q"
+              placeholder="Bạn cần tìm linh kiện gì...?"
+              value="{{ search_query }}"
+              required
+            />
+            <button
+              class="btn btn-link position-absolute end-0 top-0 text-dark"
+              type="submit"
+              style="text-decoration: none"
+            >
+              🔍
+            </button>
+          </form>
+
+          <div class="d-flex align-items-center ms-auto">
+            <form
+              action="{% url 'search_ai' %}"
+              method="POST"
+              enctype="multipart/form-data"
+              class="me-3"
+            >
+              {% csrf_token %}
+              <label
+                for="ai-upload"
+                class="btn btn-outline-light d-flex align-items-center gap-2"
+                style="cursor: pointer"
+                title="Tải ảnh lên để tìm kiếm"
+              >
+                <span>📷 ChatbotAI Tìm Ảnh</span>
+              </label>
+              <input
+                type="file"
+                name="image"
+                id="ai-upload"
+                accept="image/*"
+                style="display: none"
+                onchange="this.form.submit()"
+              />
+            </form>
+
+            <a
+              href="{% url 'cart' %}"
+              class="btn btn-light position-relative me-3 text-danger"
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark border border-light"
+              >
+                {{ cart_items|default:0 }}
+              </span>
+            </a>
+
+            {% if user.is_authenticated %}
+            <div class="dropdown">
+              <a
+                href="#"
+                class="text-white text-decoration-none dropdown-toggle fw-bold"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-user-circle me-1"></i> {{ user.username }}
+              </a>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                {% if user.is_superuser %}
+                <li>
+                  <a
+                    class="dropdown-item text-danger fw-bold"
+                    href="{% url 'admin_dashboard' %}"
+                  >
+                    <i class="fas fa-cogs me-2"></i> Admin Panel
+                  </a>
+                </li>
+                {% else %}
+                <li>
+                  <a class="dropdown-item" href="{% url 'dashboard' %}">
+                    <i class="fas fa-history me-2"></i> Lịch sử đơn hàng
+                  </a>
+                </li>
+                {% endif %}
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="dropdown-item text-danger">
+                      <i class="fas fa-sign-out-alt me-2"></i> Đăng xuất
+                    </button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            {% else %}
+            <a
+              href="{% url 'login' %}"
+              class="text-white text-decoration-none fw-bold"
+              >Đăng nhập</a
+            >
+            <span class="text-white mx-2">|</span>
+            <a
+              href="{% url 'register' %}"
+              class="text-white text-decoration-none"
+              >Đăng ký</a
+            >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="min-vh-100">
+      {% if messages %}
+      <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+          {{ message }}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+          ></button>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %} {% block content %} {% endblock %}
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+      <div class="container">
+        <p class="mb-0">&copy; Cửa hàng linh kiện PC</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

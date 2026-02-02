@@ -1,0 +1,58 @@
+{% extends 'store/base.html' %} {% block content %}
+<div
+  class="bg-light"
+  style="min-height: 80vh; display: flex; align-items: center"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <div class="card border-0 shadow-lg rounded-3 p-5">
+          <div class="mb-4">
+            <div
+              style="
+                width: 80px;
+                height: 80px;
+                background: #d1e7dd;
+                color: #198754;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+              "
+            >
+              <i class="fas fa-check fa-3x"></i>
+            </div>
+          </div>
+
+          <h2 class="fw-bold text-success mb-3">Đặt hàng thành công!</h2>
+          <p class="text-muted mb-4">
+            Cảm ơn bạn đã mua sắm tại <strong>Cửa hàng linh kiện PC</strong>.
+            <br />
+            Đơn hàng của bạn đang được xử lý và sẽ giao đi sớm nhất.
+          </p>
+
+          <div class="bg-light p-3 rounded mb-4 text-start">
+            <p class="mb-1">
+              <strong>Mã đơn hàng:</strong>
+              <span class="text-danger">#{{ order.id }}</span>
+            </p>
+            <p class="mb-1">
+              <strong>Người nhận:</strong> {{ order.full_name }}
+            </p>
+            <p class="mb-0">
+              <strong>Tổng tiền:</strong> {{ order.total_price }}₫
+            </p>
+          </div>
+
+          <div class="d-grid gap-2">
+            <a href="{% url 'home' %}" class="btn btn-danger py-2 fw-bold">
+              <i class="fas fa-shopping-bag me-2"></i> Tiếp tục mua sắm
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

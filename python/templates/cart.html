@@ -1,0 +1,49 @@
+{% extends 'store/base.html' %} {% load humanize %} {% block content %}
+<h3 class="fw-bold mb-4">Giỏ hàng của bạn</h3>
+{% if cart_items %}
+<div class="row">
+  <div class="col-md-8">
+    <div class="bg-white rounded shadow-sm p-3">
+      {% for item in cart_items %}
+      <div
+        class="d-flex justify-content-between align-items-center border-bottom py-3"
+      >
+        <div class="d-flex align-items-center">
+          {% if item.product.image %}<img
+            src="{{ item.product.image.url }}"
+            width="60"
+            class="me-3"
+          />{% endif %}
+          <div>
+            <h6 class="mb-0">{{ item.product.name }}</h6>
+            <small>{{ item.product.price|intcomma }}₫ x {{ item.qty }}</small>
+          </div>
+        </div>
+        <div>
+          <span class="fw-bold text-danger">{{ item.subtotal|intcomma }}₫</span>
+          <a
+            href="{% url 'remove_cart' item.product.id %}"
+            class="btn btn-sm btn-outline-secondary ms-2"
+            ><i class="fas fa-trash"></i
+          ></a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="bg-white rounded shadow-sm p-3">
+      <h5 class="fw-bold">Tổng tiền</h5>
+      <h3 class="text-danger text-end">{{ total|intcomma }}₫</h3>
+      <a href="{% url 'checkout' %}" class="btn btn-cps w-100 mt-3"
+        >TIẾN HÀNH THANH TOÁN</a
+      >
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="text-center py-5">
+  <p>Giỏ hàng trống</p>
+  <a href="/" class="btn btn-danger">Tiếp tục mua sắm</a>
+</div>
+{% endif %} {% endblock %}

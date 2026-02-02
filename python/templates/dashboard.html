@@ -1,0 +1,43 @@
+{% extends 'store/base.html' %} {% load humanize %} {% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Lịch sử đơn hàng</h2>
+
+  <div class="table-responsive bg-white shadow-sm p-4 rounded">
+    <table class="table table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Mã đơn</th>
+          <th>Ngày đặt</th>
+          <th>Tổng tiền</th>
+          <th>Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr>
+          <td>#{{ order.id }}</td>
+          <td>{{ order.created_at|date:"d/m/Y" }}</td>
+          <td>{{ order.total_price|intcomma }}₫</td>
+          <td>
+            {% if order.paid %}
+            <span class="badge bg-success">Đã thanh toán</span>
+            {% else %}
+            <span class="badge bg-warning text-dark">Chờ xử lý</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4" class="text-center py-4">
+            <p class="text-muted">Bạn chưa có đơn hàng nào.</p>
+            <a href="{% url 'home' %}" class="btn btn-primary btn-sm"
+              >Mua sắm ngay</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
